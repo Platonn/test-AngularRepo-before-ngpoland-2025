@@ -1,12 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { ChildComponent } from './child.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  imports: [ChildComponent],
+  template: `
+    <h1>App</h1>
+    <app-child></app-child>
+  `,
 })
-export class App {
-  protected readonly title = signal('test-AngularRepo-before-ngpoland-2025');
-}
+export class App {}

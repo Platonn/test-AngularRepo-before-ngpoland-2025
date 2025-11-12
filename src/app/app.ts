@@ -1,5 +1,4 @@
 import { Component, inject, ViewContainerRef } from '@angular/core';
-import { ChildComponent } from './child.component';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +12,10 @@ export class App {
   vcr = inject(ViewContainerRef);
 
   ngOnInit() {
-    this.vcr.createComponent(ChildComponent);
+    import('./child.component')
+      .then((m) => m.ChildComponent)
+      .then((lazyLoadedComponent) => {
+        this.vcr.createComponent(lazyLoadedComponent);
+      });
   }
 }
